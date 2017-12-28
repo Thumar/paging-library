@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.androidkt.archpaging"
         minSdkVersion 19
@@ -18,8 +18,8 @@ android {
         }
     }
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -31,11 +31,17 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'android.arch.lifecycle:runtime:1.0.0'
-    implementation 'android.arch.lifecycle:extensions:1.0.0-alpha9-1'
-    annotationProcessor "android.arch.lifecycle:compiler:1.0.0-alpha9-1"
-    implementation 'android.arch.persistence.room:runtime:1.0.0-alpha9-1'
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha9-1"
-    implementation 'android.arch.paging:runtime:1.0.0-alpha1'
     implementation 'com.android.support:recyclerview-v7:26.0.2'
+
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:1.0.0"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
+
+    // Room
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+
+    // Paging
+    implementation "android.arch.paging:runtime:1.0.0-alpha4-1"
+
 }

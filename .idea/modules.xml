@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ArchPaging.iml" filepath="$PROJECT_DIR$/ArchPaging.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/db-paging-library.iml" filepath="$PROJECT_DIR$/db-paging-library.iml" />
     </modules>
   </component>
 </project>

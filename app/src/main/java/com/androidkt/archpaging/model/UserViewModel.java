@@ -2,6 +2,8 @@ package com.androidkt.archpaging.model;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
+import android.arch.paging.DataSource;
+import android.arch.paging.LivePagedListBuilder;
 import android.arch.paging.PagedList;
 
 import com.androidkt.archpaging.User;
@@ -20,11 +22,13 @@ public class UserViewModel extends ViewModel {
     }
 
     public void init(UserDao userDao) {
-        userList = userDao.usersByFirstName().create(0,
-                new PagedList.Config.Builder()
-                        .setEnablePlaceholders(true)
-                        .setPageSize(10)
-                        .setPrefetchDistance(5)
-                        .build());
+        PagedList.Config pagedListConfig =
+                (new PagedList.Config.Builder()).setEnablePlaceholders(true)
+                        .setPrefetchDistance(10)
+                        .setPageSize(20).build();
+
+        userList = (new LivePagedListBuilder(userDao.usersByFirstName(), pagedListConfig))
+                .build();
+
     }
 }

@@ -1,5 +1,6 @@
 package com.androidkt.archpaging.db.dao;
 
+import android.arch.paging.DataSource;
 import android.arch.paging.LivePagedListProvider;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -32,6 +33,6 @@ public interface UserDao {
     public void deleteUser(User... user);
 
     @Query("SELECT * FROM User")
-    public abstract LivePagedListProvider<Integer,User> usersByFirstName();
+    public abstract DataSource.Factory<Integer,User> usersByFirstName();
 
 }
