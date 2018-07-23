@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.androidkt.archpaging"
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -25,23 +25,23 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:recyclerview-v7:26.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha1'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
 
     // ViewModel and LiveData
-    implementation "android.arch.lifecycle:extensions:1.0.0"
-    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0-beta01"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0-beta01"
 
     // Room
-    implementation "android.arch.persistence.room:runtime:1.0.0"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    implementation "androidx.room:room-runtime:2.0.0-beta01"
+    annotationProcessor "androidx.room:room-compiler:2.0.0-beta01"
 
     // Paging
-    implementation "android.arch.paging:runtime:1.0.0-alpha4-1"
+    implementation "androidx.paging:paging-runtime:2.0.0-beta01"
 
 }
