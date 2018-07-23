@@ -1,13 +1,13 @@
 package com.androidkt.archpaging.db.dao;
 
-import android.arch.paging.DataSource;
-import android.arch.paging.LivePagedListProvider;
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
+import androidx.paging.DataSource;
+import androidx.paging.LivePagedListProvider;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import com.androidkt.archpaging.User;
 
@@ -29,8 +29,8 @@ public interface UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     public void updateUser(User... user);
 
-    @Delete
-    public void deleteUser(User... user);
+    @Query("delete from user where user_id=:id")
+    int deleteUser(int id);
 
     @Query("SELECT * FROM User")
     public abstract DataSource.Factory<Integer,User> usersByFirstName();

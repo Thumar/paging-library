@@ -1,12 +1,15 @@
 package com.androidkt.archpaging;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.arch.persistence.room.Room;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.room.Room;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         final UserAdapter userUserAdapter = new UserAdapter();
 
         viewModel.userList.observe(this, pagedList -> {
-            userUserAdapter.setList(pagedList);
+            userUserAdapter.submitList(pagedList);
         });
 
         recyclerView.setAdapter(userUserAdapter);
@@ -60,8 +63,43 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_insert:
                 insertUser(appDatabase);
                 break;
+            case R.id.action_update:
+
+                User user = new User();
+                user.userId = 5;
+                user.firstName = "William Liam";
+                user.address = "I don't know";
+
+                updateUser(user);
+                break;
+            case R.id.action_delete:
+                deleteUser(6);
+                break;
         }
         return true;
+    }
+
+    private void deleteUser(int userId) {
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.userDao().deleteUser(userId);
+                return null;
+            }
+        }.execute();
+    }
+
+    private void updateUser(User user) {
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                appDatabase.userDao().updateUser(user);
+                return null;
+            }
+        }.execute();
+
     }
 
     public void insertUser(final AppDatabase appDatabase) {
@@ -74,4 +112,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }.execute();
     }
+
+
 }

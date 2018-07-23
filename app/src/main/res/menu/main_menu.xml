@@ -3,7 +3,13 @@
 
     <item
         android:id="@+id/action_insert"
-        android:icon="@android:drawable/ic_menu_add"
         android:title="Insert Users" />
+
+    <item
+        android:id="@+id/action_update"
+        android:title="Update Users" />
+    <item
+        android:id="@+id/action_delete"
+        android:title="Delete Users" />
 
 </menu>

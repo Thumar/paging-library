@@ -1,7 +1,7 @@
 package com.androidkt.archpaging.db;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 import com.androidkt.archpaging.User;
 import com.androidkt.archpaging.db.dao.UserDao;

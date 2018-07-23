@@ -1,18 +1,17 @@
 package com.androidkt.archpaging;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
-import android.support.v7.recyclerview.extensions.DiffCallback;
-
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.annotation.NonNull;
 /**
  * Created by brijesh on 18/9/17.
  */
 
 @Entity
 public class User {
-    public static DiffCallback<User> DIFF_CALLBACK = new DiffCallback<User>() {
+    public static DiffUtil.ItemCallback<User> DIFF_CALLBACK = new  DiffUtil.ItemCallback<User>() {
         @Override
         public boolean areItemsTheSame(@NonNull User oldItem, @NonNull User newItem) {
             return oldItem.userId == newItem.userId;
